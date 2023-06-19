@@ -822,7 +822,7 @@ public class OIDCIdentityProvider extends AbstractOAuth2IdentityProvider<OIDCIde
     @Override
     protected UriBuilder createAuthorizationUrl(AuthenticationRequest request) {
         UriBuilder uriBuilder = super.createAuthorizationUrl(request);
-        String nonce = Base64Url.encode(SecretGenerator.getInstance().randomBytes(16));
+        String nonce = Base64Url.encode(SecretGenerator.getInstance().randomBytes(32));
         AuthenticationSessionModel authenticationSession = request.getAuthenticationSession();
 
         authenticationSession.setClientNote(BROKER_NONCE_PARAM, nonce);
